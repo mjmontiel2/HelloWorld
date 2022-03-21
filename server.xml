@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <server description="new server">
 
-    <!-- Enable features -->
     <featureManager>
-        <feature>jsp-2.3</feature>
+        <!-- tag::servlet[] -->
+        <feature>servlet-4.0</feature>
+        <!-- end::servlet[] -->
+        <!-- tag::springboot[] -->
+        <feature>jsonp-1.1</feature>
+        <!-- end::springboot[] -->
     </featureManager>
 
-    <!-- To access this server from a remote client add a host attribute to the following element, e.g. host="*" -->
+    <!-- tag::httpport[] -->
     <httpEndpoint id="defaultHttpEndpoint"
+                  host="*"
                   httpPort="9080"
                   httpsPort="9443" />
+    <!-- end::httpport[] -->
 
-    <!-- Automatically expand WAR files and EAR files -->
-    <applicationManager autoExpand="true"/>
+    <!-- tag::springBootApplication[] -->
+    <springBootApplication id="demo"
+                           location="demo.war"
+                           name="demo" />
+    <!-- end::springBootApplication[] -->
 
-    <!-- Default SSL configuration enables trust for default certificates from the Java runtime --> 
-    <ssl id="defaultSSLConfig" trustDefaultCerts="true" />
 </server>
